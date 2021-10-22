@@ -7,7 +7,6 @@ D:\Studying\Coursework\proj\proj\bin\x86\Debug\ExcelDataReader.pdb
 D:\Studying\Coursework\proj\proj\bin\x86\Debug\ExcelDataReader.xml
 D:\Studying\Coursework\proj\proj\bin\x86\Debug\ExcelDataReader.DataSet.pdb
 D:\Studying\Coursework\proj\proj\bin\x86\Debug\ExcelDataReader.DataSet.xml
-D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.AssemblyReference.cache
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.Form1.resources
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.Properties.Resources.resources
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.GenerateResource.cache
@@ -15,3 +14,5 @@ D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.CoreCompileInputs.cac
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.CopyComplete
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.exe
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.pdb
+D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.ResolveComReference.cache
+D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.AssemblyReference.cache
