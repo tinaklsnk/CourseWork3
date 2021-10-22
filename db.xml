@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Chart>
+	<song genre="Rock">
+		<number>1</number>
+		<name>Beggin</name>
+		<singer>Maneskin</singer>
+	</song>
+	<song genre="Rock">
+		<number>2</number>
+		<name>Careless Whisper</name>
+		<singer>George Michael</singer>
+	</song>
+</Chart>

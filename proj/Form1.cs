@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExcelDataReader;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace proj
 {
@@ -18,6 +20,7 @@ namespace proj
     {
         private string fileName = "D:\\Studying\\Coursework\\proj\\database.XLSX";
         private DataTableCollection tableCollection = null;
+        XmlSerializer xs;
         public Form1()
         {
             InitializeComponent();
@@ -41,36 +44,6 @@ namespace proj
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void ShowTable()
-        {
-            try
-            {
-                if (fileName != null)
-                {
-                    Regex regexExcel = new Regex(@"\w*xlsx|XLSX$");
-                    MatchCollection matches = regexExcel.Matches(fileName);
-                    if (matches.Count > 0)
-                    {
-                        OpenExcelFile(fileName);
-                    }
-                    Regex regexCSV = new Regex(@"\w*csv$");
-                    matches = regexCSV.Matches(fileName);
-                    if (matches.Count > 0)
-                    {
-                        OpenCSVFile(fileName);
-                    }
-                }
-                else
-                {
-                    throw new Exception("File not found!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,6 +70,42 @@ namespace proj
                     fileName = openFileDialog1.FileName;
                     ShowTable();
                     //OpenExcelFile(fileName);
+                }
+                else
+                {
+                    throw new Exception("File not found!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ShowTable()
+        {
+            try
+            {
+                if (fileName != null)
+                {
+                    Regex regexExcel = new Regex(@"\w*xlsx|XLSX$");
+                    MatchCollection matches = regexExcel.Matches(fileName);
+                    if (matches.Count > 0)
+                    {
+                        OpenExcelFile(fileName);
+                    }
+                    Regex regexCSV = new Regex(@"\w*csv$");
+                    matches = regexCSV.Matches(fileName);
+                    if (matches.Count > 0)
+                    {
+                        OpenCSVFile(fileName);
+                    }
+                    Regex regexXML = new Regex(@"\w*xml$");
+                    matches = regexXML.Matches(fileName);
+                    if (matches.Count > 0)
+                    {
+                        OpenXMLFile(fileName);
+                    }
                 }
                 else
                 {
@@ -166,12 +175,22 @@ namespace proj
                 dataGridView1.DataSource = dt;
             }
         }
+
+        private void OpenXMLFile(string path)
+        {
+            DataSet ds = new DataSet();
+            ds.ReadXml(path);
+            dataGridView1.DataSource = ds.Tables[0];
+            //FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            //Songs s = new Songs();
+            //List<Songs> list = (List<Songs>)xs.Deserialize(fs);
+        }
     }
 
     public class Songs
     {
         public int Number { get; set; }
-        public string Song { get; set; }
+        public string Name { get; set; }
         public string Singer { get; set; }
     }
 }

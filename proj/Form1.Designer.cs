@@ -99,7 +99,7 @@ namespace proj
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Excel|*.xlsx|CSV|*.csv";
+            this.openFileDialog1.Filter = "Excel|*.xlsx|CSV|*.csv|XML|*.xml";
             // 
             // menuStrip1
             // 
