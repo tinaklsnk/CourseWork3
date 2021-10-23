@@ -16,3 +16,5 @@ D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.exe
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.pdb
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.ResolveComReference.cache
 D:\Studying\Coursework\proj\proj\obj\x86\Debug\proj.csproj.AssemblyReference.cache
+D:\Studying\Coursework\proj\proj\bin\x86\Debug\Newtonsoft.Json.dll
+D:\Studying\Coursework\proj\proj\bin\x86\Debug\Newtonsoft.Json.xml

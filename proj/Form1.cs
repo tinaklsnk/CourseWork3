@@ -13,6 +13,7 @@ using ExcelDataReader;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Xml;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace proj
 {
@@ -33,6 +34,7 @@ namespace proj
             notifyIcon1.Text = "MyApp";
             ShowTable();
             dataGridView1.ReadOnly = true;
+            //GetWeather();
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -117,6 +119,7 @@ namespace proj
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void OpenExcelFile(string path)
         {
             FileStream stream = File.Open(path, FileMode.Open, FileAccess.Read);
@@ -128,8 +131,7 @@ namespace proj
                 {
                     UseHeaderRow = true
                 }
-            }
-            );
+            });
 
             tableCollection = db.Tables;
             toolStripComboBox1.Text = "";
@@ -139,7 +141,6 @@ namespace proj
             {
                 toolStripComboBox1.Items.Add(table.TableName);
             }
-
             toolStripComboBox1.SelectedIndex = 0;
         }
 
@@ -184,6 +185,43 @@ namespace proj
             //FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             //Songs s = new Songs();
             //List<Songs> list = (List<Songs>)xs.Deserialize(fs);
+        }
+
+        private void GetWeather()
+        {
+            try
+            {
+                string city = cityBox.Text;
+                if (city != String.Empty)
+                {
+                    JSON j = new JSON();
+                    string myJsonResponse = j.GetJSON(city);
+                    if (myJsonResponse != String.Empty)
+                    {
+                        Root data = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+                        double temp = Convert.ToDouble(data.list[0].main.temp) - 273.15;
+                        weatherLabel.Text = Math.Round(temp).ToString() + "°C " + data.list[0].weather[0].main;
+                    }
+                    else
+                    {
+                        throw new Exception("City not found!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Enter the city!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void weatherButton_Click(object sender, EventArgs e)
+        {
+            GetWeather();
         }
     }
 

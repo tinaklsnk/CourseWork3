@@ -43,10 +43,16 @@ namespace proj
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.weatherLabel = new System.Windows.Forms.Label();
+            this.cityBox = new System.Windows.Forms.TextBox();
+            this.cityLabel = new System.Windows.Forms.Label();
+            this.weatherButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -138,19 +144,64 @@ namespace proj
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 56);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(743, 426);
+            this.dataGridView1.Size = new System.Drawing.Size(743, 290);
             this.dataGridView1.TabIndex = 5;
+            // 
+            // weatherLabel
+            // 
+            this.weatherLabel.AutoSize = true;
+            this.weatherLabel.Location = new System.Drawing.Point(3, 93);
+            this.weatherLabel.Name = "weatherLabel";
+            this.weatherLabel.Size = new System.Drawing.Size(0, 17);
+            this.weatherLabel.TabIndex = 6;
+            // 
+            // cityBox
+            // 
+            this.cityBox.Location = new System.Drawing.Point(6, 59);
+            this.cityBox.Name = "cityBox";
+            this.cityBox.Size = new System.Drawing.Size(194, 22);
+            this.cityBox.TabIndex = 7;
+            // 
+            // cityLabel
+            // 
+            this.cityLabel.AutoSize = true;
+            this.cityLabel.Location = new System.Drawing.Point(3, 30);
+            this.cityLabel.Name = "cityLabel";
+            this.cityLabel.Size = new System.Drawing.Size(31, 17);
+            this.cityLabel.TabIndex = 8;
+            this.cityLabel.Text = "City";
+            // 
+            // weatherButton
+            // 
+            this.weatherButton.Location = new System.Drawing.Point(103, 23);
+            this.weatherButton.Name = "weatherButton";
+            this.weatherButton.Size = new System.Drawing.Size(97, 30);
+            this.weatherButton.TabIndex = 9;
+            this.weatherButton.Text = "Show";
+            this.weatherButton.UseVisualStyleBackColor = true;
+            this.weatherButton.Click += new System.EventHandler(this.weatherButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cityLabel);
+            this.panel1.Controls.Add(this.weatherButton);
+            this.panel1.Controls.Add(this.cityBox);
+            this.panel1.Controls.Add(this.weatherLabel);
+            this.panel1.Location = new System.Drawing.Point(538, 352);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(205, 135);
+            this.panel1.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 482);
+            this.ClientSize = new System.Drawing.Size(743, 490);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -166,6 +217,8 @@ namespace proj
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,6 +238,11 @@ namespace proj
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label weatherLabel;
+        private System.Windows.Forms.TextBox cityBox;
+        private System.Windows.Forms.Label cityLabel;
+        private System.Windows.Forms.Button weatherButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
