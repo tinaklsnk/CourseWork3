@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,11 +13,16 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Xml;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace proj
 {
     public partial class Form1 : Form
     {
+        private SqlConnection sqlConnection = null;
+
         private string fileName = "D:\\Studying\\Coursework\\proj\\database.XLSX";
         private DataTableCollection tableCollection = null;
         XmlSerializer xs;
@@ -34,7 +38,15 @@ namespace proj
             notifyIcon1.Text = "MyApp";
             ShowTable();
             dataGridView1.ReadOnly = true;
-            //GetWeather();
+
+            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UsersDB"].ConnectionString);
+            sqlConnection.Open();
+            if(sqlConnection.State==ConnectionState.Open)
+            {
+                MessageBox.Show("Connected!");
+            }
+            LoginForm form = new LoginForm();
+            form.Show();
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
