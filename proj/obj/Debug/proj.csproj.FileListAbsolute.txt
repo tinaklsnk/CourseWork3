@@ -34,3 +34,4 @@ D:\Studying\Coursework\proj\proj\bin\Debug\System.Numerics.Vectors.dll
 D:\Studying\Coursework\proj\proj\bin\Debug\MySql.Data.xml
 D:\Studying\Coursework\proj\proj\obj\Debug\proj.exe.config
 D:\Studying\Coursework\proj\proj\obj\Debug\proj.LoginForm.resources
+D:\Studying\Coursework\proj\proj\obj\Debug\proj.RegisterForm.resources

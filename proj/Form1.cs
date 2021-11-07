@@ -21,8 +21,6 @@ namespace proj
 {
     public partial class Form1 : Form
     {
-        private SqlConnection sqlConnection = null;
-
         private string fileName = "D:\\Studying\\Coursework\\proj\\database.XLSX";
         private DataTableCollection tableCollection = null;
         XmlSerializer xs;
@@ -38,15 +36,6 @@ namespace proj
             notifyIcon1.Text = "MyApp";
             ShowTable();
             dataGridView1.ReadOnly = true;
-
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UsersDB"].ConnectionString);
-            sqlConnection.Open();
-            if(sqlConnection.State==ConnectionState.Open)
-            {
-                MessageBox.Show("Connected!");
-            }
-            LoginForm form = new LoginForm();
-            form.Show();
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -199,7 +188,7 @@ namespace proj
             //List<Songs> list = (List<Songs>)xs.Deserialize(fs);
         }
 
-        private void GetWeather()
+        private void weatherButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -228,12 +217,11 @@ namespace proj
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
-        private void weatherButton_Click(object sender, EventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            GetWeather();
+            Application.Exit();
         }
     }
 
