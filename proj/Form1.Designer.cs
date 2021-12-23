@@ -48,6 +48,12 @@ namespace proj
             this.cityLabel = new System.Windows.Forms.Label();
             this.weatherButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelLogOut = new System.Windows.Forms.Label();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eXCELToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -111,7 +117,8 @@ namespace proj
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.saveToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(743, 28);
@@ -188,21 +195,74 @@ namespace proj
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelLogOut);
             this.panel1.Controls.Add(this.cityLabel);
             this.panel1.Controls.Add(this.weatherButton);
             this.panel1.Controls.Add(this.cityBox);
             this.panel1.Controls.Add(this.weatherLabel);
             this.panel1.Location = new System.Drawing.Point(538, 352);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(205, 135);
+            this.panel1.Size = new System.Drawing.Size(205, 169);
             this.panel1.TabIndex = 10;
+            // 
+            // labelLogOut
+            // 
+            this.labelLogOut.AutoSize = true;
+            this.labelLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelLogOut.Location = new System.Drawing.Point(128, 146);
+            this.labelLogOut.Name = "labelLogOut";
+            this.labelLogOut.Size = new System.Drawing.Size(66, 17);
+            this.labelLogOut.TabIndex = 10;
+            this.labelLogOut.Text = "Log Out";
+            this.labelLogOut.Click += new System.EventHandler(this.labelLogOut_Click);
+            this.labelLogOut.MouseEnter += new System.EventHandler(this.labelLogOut_MouseEnter);
+            this.labelLogOut.MouseLeave += new System.EventHandler(this.labelLogOut_MouseLeave);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveAsToolStripMenuItem});
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xMLToolStripMenuItem,
+            this.eXCELToolStripMenuItem,
+            this.cSVToolStripMenuItem});
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveAsToolStripMenuItem.Text = "Save as";
+            // 
+            // xMLToolStripMenuItem
+            // 
+            this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.xMLToolStripMenuItem.Text = "XML";
+            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+            // 
+            // eXCELToolStripMenuItem
+            // 
+            this.eXCELToolStripMenuItem.Name = "eXCELToolStripMenuItem";
+            this.eXCELToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.eXCELToolStripMenuItem.Text = "EXCEL";
+            this.eXCELToolStripMenuItem.Click += new System.EventHandler(this.eXCELToolStripMenuItem_Click);
+            // 
+            // cSVToolStripMenuItem
+            // 
+            this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
+            this.cSVToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cSVToolStripMenuItem.Text = "CSV";
+            this.cSVToolStripMenuItem.Click += new System.EventHandler(this.cSVToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
-            this.ClientSize = new System.Drawing.Size(743, 490);
+            this.ClientSize = new System.Drawing.Size(743, 524);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
@@ -246,6 +306,12 @@ namespace proj
         private System.Windows.Forms.Label cityLabel;
         private System.Windows.Forms.Button weatherButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelLogOut;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eXCELToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cSVToolStripMenuItem;
     }
 }
 

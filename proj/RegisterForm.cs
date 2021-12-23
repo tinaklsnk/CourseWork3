@@ -41,7 +41,10 @@ namespace proj
             command.Parameters.Add("@usPass", MySqlDbType.VarChar).Value = passwordBox.Text;
             sqlConnection.Open();
             if (command.ExecuteNonQuery() == 1)
+            {
                 MessageBox.Show("Signed up!");
+                this.Hide();
+            }
             else
                 MessageBox.Show("Fail!");
             sqlConnection.Close();

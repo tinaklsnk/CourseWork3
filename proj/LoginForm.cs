@@ -48,7 +48,7 @@ namespace proj
                 this.Hide();
             }
             else
-                MessageBox.Show("User not found!");
+                MessageBox.Show("Login or Password not Correct!");
         }
 
         private void labelSignUp_Click(object sender, EventArgs e)
@@ -70,6 +70,13 @@ namespace proj
         private void labelSignUp_MouseLeave(object sender, EventArgs e)
         {
             labelSignUp.ForeColor = Color.Black;
+        }
+
+        private void adminLabel_Click(object sender, EventArgs e)
+        {
+            AdminLoginForm admin = new AdminLoginForm();
+            admin.Show();
+            this.Hide();
         }
     }
 }

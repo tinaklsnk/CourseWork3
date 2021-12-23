@@ -37,6 +37,7 @@ namespace proj
             this.label3 = new System.Windows.Forms.Label();
             this.labelSignUp = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
+            this.adminLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginBox
@@ -109,12 +110,24 @@ namespace proj
             this.passwordBox.TabIndex = 7;
             this.passwordBox.UseSystemPasswordChar = true;
             // 
+            // adminLabel
+            // 
+            this.adminLabel.AutoSize = true;
+            this.adminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminLabel.Location = new System.Drawing.Point(305, 465);
+            this.adminLabel.Name = "adminLabel";
+            this.adminLabel.Size = new System.Drawing.Size(113, 17);
+            this.adminLabel.TabIndex = 8;
+            this.adminLabel.Text = "Sign In as Admin";
+            this.adminLabel.Click += new System.EventHandler(this.adminLabel_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
-            this.ClientSize = new System.Drawing.Size(430, 450);
+            this.ClientSize = new System.Drawing.Size(430, 491);
+            this.Controls.Add(this.adminLabel);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.labelSignUp);
             this.Controls.Add(this.label3);
@@ -122,7 +135,6 @@ namespace proj
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.Text = "MyApp";
@@ -142,5 +154,6 @@ namespace proj
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelSignUp;
         private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.Label adminLabel;
     }
 }

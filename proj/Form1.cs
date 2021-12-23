@@ -1,21 +1,14 @@
-﻿using System;
+﻿using ExcelDataReader;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ExcelDataReader;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Xml;
 using System.Xml.Serialization;
-using Newtonsoft.Json;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
+using Excel = Microsoft.Office.Interop.Excel; 
 
 namespace proj
 {
@@ -24,6 +17,7 @@ namespace proj
         private string fileName = "D:\\Studying\\Coursework\\proj\\database.XLSX";
         private DataTableCollection tableCollection = null;
         XmlSerializer xs;
+
         public Form1()
         {
             InitializeComponent();
@@ -143,6 +137,8 @@ namespace proj
                 toolStripComboBox1.Items.Add(table.TableName);
             }
             toolStripComboBox1.SelectedIndex = 0;
+            stream.Close();
+            reader.Close();
         }
 
         private void OpenCSVFile(string path)
@@ -223,6 +219,117 @@ namespace proj
         {
             Application.Exit();
         }
+
+        public void AllowEditTable()
+        {
+            dataGridView1.ReadOnly = false;
+        }
+
+        private void labelLogOut_MouseEnter(object sender, EventArgs e)
+        {
+            labelLogOut.ForeColor = Color.White;
+        }
+
+        private void labelLogOut_MouseLeave(object sender, EventArgs e)
+        {
+            labelLogOut.ForeColor = Color.Black;
+        }
+
+        private void labelLogOut_Click(object sender, EventArgs e)
+        {
+            LoginForm form = new LoginForm();
+            form.Show();
+            this.Hide();
+        }
+
+        private void copyAlltoClipboard()
+        {
+            //to remove the first blank column from datagridview
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectAll();
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+        private void eXCELToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            copyAlltoClipboard();
+            Excel.Application xlexcel;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Excel.Application();
+            xlexcel.Visible = false;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[2, 1];
+            xlWorkSheet.Cells[1, 1] = "№";
+            xlWorkSheet.Cells[1, 2] = "Song";
+            xlWorkSheet.Cells[1, 3] = "Artist";
+            xlWorkSheet.Cells[1, 4] = "Views";
+            xlWorkSheet.Name = toolStripComboBox1.SelectedItem.ToString();
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel|*.xlsx" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    inputParameter.fileName = sfd.FileName;
+                    xlWorkBook.SaveAs(sfd.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                }
+            }
+            xlexcel.Quit();
+        }
+        //private void eXCELToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+
+        //    Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
+        //    Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
+        //    Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+        //    worksheet = workbook.Sheets["Sheet1"];
+        //    worksheet = workbook.ActiveSheet;
+        //    worksheet.Name = "Worksheet Name";
+        //    for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+        //    {
+        //        worksheet.Cells[i, 1] = dataGridView1.Columns[i - 1].HeaderText;
+        //    }
+
+        //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+        //    {
+        //        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+        //        {
+        //            worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+        //        }
+        //    }
+
+
+        //    using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel|*.xlsx"})
+        //    {
+        //        if(sfd.ShowDialog()== DialogResult.OK)
+        //        {
+        //            inputParameter.fileName = sfd.FileName;
+        //            workbook.SaveAs(sfd.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+        //        }
+        //    }
+        //}
+
+        private void cSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        struct DataParameter
+        {
+            public List<Songs> list;
+            public string fileName { get; set; } 
+        }
+
+        DataParameter inputParameter;
     }
 
     public class Songs
@@ -230,5 +337,6 @@ namespace proj
         public int Number { get; set; }
         public string Name { get; set; }
         public string Singer { get; set; }
+        public int Views { get; set; }
     }
 }
