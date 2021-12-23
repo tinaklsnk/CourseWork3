@@ -138,7 +138,7 @@ namespace proj
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStrip);
             // 
             // contextMenuStrip2
             // 
@@ -191,7 +191,7 @@ namespace proj
             this.weatherButton.TabIndex = 9;
             this.weatherButton.Text = "Show";
             this.weatherButton.UseVisualStyleBackColor = true;
-            this.weatherButton.Click += new System.EventHandler(this.weatherButton_Click);
+            this.weatherButton.Click += new System.EventHandler(this.WeatherButton_Click);
             // 
             // panel1
             // 
@@ -241,21 +241,21 @@ namespace proj
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
             this.xMLToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.xMLToolStripMenuItem.Text = "XML";
-            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.SaveAsXML);
             // 
             // eXCELToolStripMenuItem
             // 
             this.eXCELToolStripMenuItem.Name = "eXCELToolStripMenuItem";
             this.eXCELToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.eXCELToolStripMenuItem.Text = "EXCEL";
-            this.eXCELToolStripMenuItem.Click += new System.EventHandler(this.eXCELToolStripMenuItem_Click);
+            this.eXCELToolStripMenuItem.Click += new System.EventHandler(this.SaveAsEXCEL);
             // 
             // cSVToolStripMenuItem
             // 
             this.cSVToolStripMenuItem.Name = "cSVToolStripMenuItem";
             this.cSVToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.cSVToolStripMenuItem.Text = "CSV";
-            this.cSVToolStripMenuItem.Click += new System.EventHandler(this.cSVToolStripMenuItem_Click);
+            this.cSVToolStripMenuItem.Click += new System.EventHandler(this.SaveAsCSV);
             // 
             // Form1
             // 
