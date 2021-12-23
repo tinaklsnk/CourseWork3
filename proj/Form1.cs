@@ -20,6 +20,7 @@ namespace proj
         private string fileName = "D:\\Studying\\Coursework\\proj\\database.XLSX";
         private DataTableCollection tableCollection = null;
         XmlSerializer xs;
+        static bool darkTheme = false;
 
         public Form1()
         {
@@ -224,17 +225,7 @@ namespace proj
             dataGridView1.ReadOnly = false;
         }
 
-        private void labelLogOut_MouseEnter(object sender, EventArgs e)
-        {
-            labelLogOut.ForeColor = Color.White;
-        }
-
-        private void labelLogOut_MouseLeave(object sender, EventArgs e)
-        {
-            labelLogOut.ForeColor = Color.Black;
-        }
-
-        private void labelLogOut_Click(object sender, EventArgs e)
+        private void LogOutLabel_Click(object sender, EventArgs e)
         {
             LoginForm form = new LoginForm();
             form.Show();
@@ -361,6 +352,62 @@ namespace proj
             public string fileName { get; set; }
         }
         DataParameter inputParameter;
+
+        private void smallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Size = new Size(450, 300);
+            this.AutoScroll = true;
+        }
+        private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Size = new Size(575, 471);
+        }
+
+        private void bigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Size = new Size(1280, 720);
+        }
+
+        private void beigeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Tan;
+            cityLabel.ForeColor = Color.Black;
+            logOutLabel.ForeColor = Color.Black;
+            dataGridView1.BackgroundColor = Color.Tan;
+            darkTheme = false;
+        }
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Black;
+            cityLabel.ForeColor = Color.White;
+            logOutLabel.ForeColor = Color.White;
+            dataGridView1.BackgroundColor = Color.Black;
+            darkTheme = true;
+        }
+
+        private void logOutLabel_MouseLeave(object sender, EventArgs e)
+        {
+            if (darkTheme)
+            {
+                logOutLabel.ForeColor = Color.White;
+            }
+            else
+            {
+                logOutLabel.ForeColor = Color.Black;
+            }
+        }
+
+        private void logOutLabel_MouseEnter(object sender, EventArgs e)
+        {
+            if (darkTheme)
+            {
+                logOutLabel.ForeColor = Color.Red;
+            }
+            else
+            {
+                logOutLabel.ForeColor = Color.White;
+            }
+        }
     }
 
     public class Songs
