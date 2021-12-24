@@ -33,11 +33,11 @@ namespace proj
             this.loginBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonSignIn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.labelSignUp = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.adminLabel = new System.Windows.Forms.Label();
+            this.signInButton = new proj.RJButton();
             this.SuspendLayout();
             // 
             // loginBox
@@ -64,18 +64,6 @@ namespace proj
             this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
-            // 
-            // buttonSignIn
-            // 
-            this.buttonSignIn.BackColor = System.Drawing.Color.White;
-            this.buttonSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSignIn.Location = new System.Drawing.Point(152, 274);
-            this.buttonSignIn.Name = "buttonSignIn";
-            this.buttonSignIn.Size = new System.Drawing.Size(120, 54);
-            this.buttonSignIn.TabIndex = 4;
-            this.buttonSignIn.Text = "Sign In";
-            this.buttonSignIn.UseVisualStyleBackColor = false;
-            this.buttonSignIn.Click += new System.EventHandler(this.buttonSignIn_Click);
             // 
             // label3
             // 
@@ -120,6 +108,28 @@ namespace proj
             this.adminLabel.TabIndex = 8;
             this.adminLabel.Text = "Sign In as Admin";
             this.adminLabel.Click += new System.EventHandler(this.adminLabel_Click);
+            this.adminLabel.MouseEnter += new System.EventHandler(this.adminLabel_MouseEnter);
+            this.adminLabel.MouseLeave += new System.EventHandler(this.adminLabel_MouseLeave);
+            // 
+            // signInButton
+            // 
+            this.signInButton.BackColor = System.Drawing.Color.White;
+            this.signInButton.BackgroundColor = System.Drawing.Color.White;
+            this.signInButton.BorderColor = System.Drawing.Color.White;
+            this.signInButton.BorderRadius = 15;
+            this.signInButton.BorderSize = 0;
+            this.signInButton.FlatAppearance.BorderSize = 0;
+            this.signInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.signInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.signInButton.ForeColor = System.Drawing.Color.Black;
+            this.signInButton.Location = new System.Drawing.Point(152, 243);
+            this.signInButton.Name = "signInButton";
+            this.signInButton.Size = new System.Drawing.Size(120, 46);
+            this.signInButton.TabIndex = 12;
+            this.signInButton.Text = "Sign In";
+            this.signInButton.TextColor = System.Drawing.Color.Black;
+            this.signInButton.UseVisualStyleBackColor = false;
+            this.signInButton.Click += new System.EventHandler(this.SignIn_Click);
             // 
             // LoginForm
             // 
@@ -127,11 +137,11 @@ namespace proj
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(430, 491);
+            this.Controls.Add(this.signInButton);
             this.Controls.Add(this.adminLabel);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.labelSignUp);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.buttonSignIn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginBox);
@@ -150,10 +160,10 @@ namespace proj
         private System.Windows.Forms.TextBox loginBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonSignIn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelSignUp;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label adminLabel;
+        private RJButton signInButton;
     }
 }

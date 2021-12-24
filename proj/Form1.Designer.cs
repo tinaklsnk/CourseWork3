@@ -54,13 +54,14 @@ namespace proj
             this.appeaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beigeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.chartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.weatherLabel = new System.Windows.Forms.Label();
             this.cityBox = new System.Windows.Forms.TextBox();
             this.cityLabel = new System.Windows.Forms.Label();
-            this.weatherButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ShowWeatherButton = new proj.RJButton();
             this.logOutLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -127,7 +128,8 @@ namespace proj
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.saveToolStripMenuItem,
-            this.viewToolStripMenuItem});
+            this.viewToolStripMenuItem,
+            this.chartToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(743, 28);
@@ -212,21 +214,21 @@ namespace proj
             this.smallToolStripMenuItem.Name = "smallToolStripMenuItem";
             this.smallToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.smallToolStripMenuItem.Text = "Small";
-            this.smallToolStripMenuItem.Click += new System.EventHandler(this.smallToolStripMenuItem_Click);
+            this.smallToolStripMenuItem.Click += new System.EventHandler(this.SmallSize_Click);
             // 
             // mediumToolStripMenuItem
             // 
             this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
             this.mediumToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.mediumToolStripMenuItem.Text = "Medium";
-            this.mediumToolStripMenuItem.Click += new System.EventHandler(this.mediumToolStripMenuItem_Click);
+            this.mediumToolStripMenuItem.Click += new System.EventHandler(this.MediumSize_Click);
             // 
             // bigToolStripMenuItem
             // 
             this.bigToolStripMenuItem.Name = "bigToolStripMenuItem";
             this.bigToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.bigToolStripMenuItem.Text = "Big";
-            this.bigToolStripMenuItem.Click += new System.EventHandler(this.bigToolStripMenuItem_Click);
+            this.bigToolStripMenuItem.Click += new System.EventHandler(this.BigSize_Click);
             // 
             // appeaToolStripMenuItem
             // 
@@ -251,11 +253,20 @@ namespace proj
             this.darkToolStripMenuItem.Text = "Dark";
             this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
             // 
-            // contextMenuStrip2
+            // chartToolStripMenuItem
             // 
-            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            this.chartToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showChartToolStripMenuItem});
+            this.chartToolStripMenuItem.Name = "chartToolStripMenuItem";
+            this.chartToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.chartToolStripMenuItem.Text = "Chart";
+            // 
+            // showChartToolStripMenuItem
+            // 
+            this.showChartToolStripMenuItem.Name = "showChartToolStripMenuItem";
+            this.showChartToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.showChartToolStripMenuItem.Text = "Show Chart";
+            this.showChartToolStripMenuItem.Click += new System.EventHandler(this.showChartToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -266,26 +277,28 @@ namespace proj
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Tan;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 138);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 169);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(743, 382);
+            this.dataGridView1.Size = new System.Drawing.Size(743, 351);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating);
             // 
             // weatherLabel
             // 
             this.weatherLabel.AutoSize = true;
-            this.weatherLabel.Location = new System.Drawing.Point(3, 93);
+            this.weatherLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.weatherLabel.Location = new System.Drawing.Point(37, 72);
             this.weatherLabel.Name = "weatherLabel";
-            this.weatherLabel.Size = new System.Drawing.Size(0, 17);
+            this.weatherLabel.Size = new System.Drawing.Size(0, 18);
             this.weatherLabel.TabIndex = 6;
             // 
             // cityBox
             // 
             this.cityBox.Location = new System.Drawing.Point(40, 30);
             this.cityBox.Name = "cityBox";
-            this.cityBox.Size = new System.Drawing.Size(194, 22);
+            this.cityBox.Size = new System.Drawing.Size(176, 22);
             this.cityBox.TabIndex = 7;
             // 
             // cityLabel
@@ -297,29 +310,37 @@ namespace proj
             this.cityLabel.TabIndex = 8;
             this.cityLabel.Text = "City";
             // 
-            // weatherButton
-            // 
-            this.weatherButton.BackColor = System.Drawing.Color.Linen;
-            this.weatherButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.weatherButton.Location = new System.Drawing.Point(250, 24);
-            this.weatherButton.Name = "weatherButton";
-            this.weatherButton.Size = new System.Drawing.Size(102, 34);
-            this.weatherButton.TabIndex = 9;
-            this.weatherButton.Text = "Show";
-            this.weatherButton.UseVisualStyleBackColor = false;
-            this.weatherButton.Click += new System.EventHandler(this.WeatherButton_Click);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.ShowWeatherButton);
             this.panel1.Controls.Add(this.cityLabel);
-            this.panel1.Controls.Add(this.weatherButton);
             this.panel1.Controls.Add(this.cityBox);
             this.panel1.Controls.Add(this.weatherLabel);
             this.panel1.Location = new System.Drawing.Point(0, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(371, 81);
+            this.panel1.Size = new System.Drawing.Size(371, 104);
             this.panel1.TabIndex = 10;
+            // 
+            // ShowWeatherButton
+            // 
+            this.ShowWeatherButton.BackColor = System.Drawing.Color.White;
+            this.ShowWeatherButton.BackgroundColor = System.Drawing.Color.White;
+            this.ShowWeatherButton.BorderColor = System.Drawing.Color.White;
+            this.ShowWeatherButton.BorderRadius = 15;
+            this.ShowWeatherButton.BorderSize = 0;
+            this.ShowWeatherButton.FlatAppearance.BorderSize = 0;
+            this.ShowWeatherButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowWeatherButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowWeatherButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowWeatherButton.Location = new System.Drawing.Point(240, 20);
+            this.ShowWeatherButton.Name = "ShowWeatherButton";
+            this.ShowWeatherButton.Size = new System.Drawing.Size(128, 43);
+            this.ShowWeatherButton.TabIndex = 11;
+            this.ShowWeatherButton.Text = "Show";
+            this.ShowWeatherButton.TextColor = System.Drawing.Color.Black;
+            this.ShowWeatherButton.UseVisualStyleBackColor = false;
+            this.ShowWeatherButton.Click += new System.EventHandler(this.ShowWeatherButton_Click);
             // 
             // logOutLabel
             // 
@@ -349,7 +370,7 @@ namespace proj
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(450, 350);
+            this.MinimumSize = new System.Drawing.Size(460, 350);
             this.Name = "Form1";
             this.Text = "MyApp";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -380,12 +401,10 @@ namespace proj
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label weatherLabel;
         private System.Windows.Forms.TextBox cityBox;
         private System.Windows.Forms.Label cityLabel;
-        private System.Windows.Forms.Button weatherButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label logOutLabel;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -401,6 +420,9 @@ namespace proj
         private System.Windows.Forms.ToolStripMenuItem appeaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beigeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showChartToolStripMenuItem;
+        private RJButton ShowWeatherButton;
     }
 }
 

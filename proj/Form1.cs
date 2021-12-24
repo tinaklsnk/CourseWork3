@@ -12,6 +12,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using Excel = Microsoft.Office.Interop.Excel;
 using Formatting = System.Xml.Formatting;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace proj
 {
@@ -232,7 +234,7 @@ namespace proj
             this.Hide();
         }
 
-        private void copyAlltoClipboard()
+        private void CopyAlltoClipboard()
         {
             //to remove the first blank column from datagridview
             dataGridView1.RowHeadersVisible = false;
@@ -245,7 +247,7 @@ namespace proj
         }
         private void SaveAsEXCEL(object sender, EventArgs e)
         {
-            copyAlltoClipboard();
+            CopyAlltoClipboard();
             Excel.Application xlexcel;
             Excel.Workbook xlWorkBook;
             Excel.Worksheet xlWorkSheet;
@@ -348,22 +350,22 @@ namespace proj
 
         struct DataParameter
         {
-            public List<Songs> list;
+            //public List<Songs> list;
             public string fileName { get; set; }
         }
         DataParameter inputParameter;
 
-        private void smallToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SmallSize_Click(object sender, EventArgs e)
         {
-            Size = new Size(450, 300);
+            Size = new Size(450, 350);
             this.AutoScroll = true;
         }
-        private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MediumSize_Click(object sender, EventArgs e)
         {
             Size = new Size(575, 471);
         }
 
-        private void bigToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BigSize_Click(object sender, EventArgs e)
         {
             Size = new Size(1280, 720);
         }
@@ -374,6 +376,7 @@ namespace proj
             cityLabel.ForeColor = Color.Black;
             logOutLabel.ForeColor = Color.Black;
             dataGridView1.BackgroundColor = Color.Tan;
+            weatherLabel.ForeColor = Color.Black;
             darkTheme = false;
         }
         private void darkToolStripMenuItem_Click(object sender, EventArgs e)
@@ -382,6 +385,7 @@ namespace proj
             cityLabel.ForeColor = Color.White;
             logOutLabel.ForeColor = Color.White;
             dataGridView1.BackgroundColor = Color.Black;
+            weatherLabel.ForeColor = Color.White;
             darkTheme = true;
         }
 
@@ -408,13 +412,93 @@ namespace proj
                 logOutLabel.ForeColor = Color.White;
             }
         }
-    }
 
-    public class Songs
-    {
-        public int Number { get; set; }
-        public string Name { get; set; }
-        public string Singer { get; set; }
-        public int Views { get; set; }
+        public List<Songs> GetData()
+        {
+            List<Songs> songs = new List<Songs>();
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                try
+                {
+                    Songs song = new Songs();
+                    song.Number = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                    song.Name = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                    song.Artist = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                    song.Views = Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
+                    songs.Add(song);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Data Error!");
+                }
+            }
+            return songs;
+        }
+        private void showChartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Graphik graphik = new Graphik(GetData());
+            graphik.ShowDialog();
+        }
+
+        private void ShowWeatherButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string city = cityBox.Text;
+                if (city != String.Empty)
+                {
+                    JSON j = new JSON();
+                    string myJsonResponse = j.GetJSON(city);
+                    if (myJsonResponse != String.Empty)
+                    {
+                        Root data = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+                        double temp = Convert.ToDouble(data.list[0].main.temp) - 273.15;
+                        weatherLabel.Text = Math.Round(temp).ToString() + "°C " + data.list[0].weather[0].main;
+                    }
+                    else
+                    {
+                        throw new Exception("City not found!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Enter the city!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == dataGridView1.Columns["Views"].Index || e.ColumnIndex == dataGridView1.Columns["№"].Index)
+                {
+                    int newInteger;
+                    if (dataGridView1.Rows[e.RowIndex].IsNewRow) { return; }
+                    if (!int.TryParse(e.FormattedValue.ToString(), out newInteger) || newInteger < 0)
+                    {
+                        e.Cancel = true;
+                        throw new Exception("Data Error!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
+
+public class Songs
+{
+    public int Number { get; set; }
+    public string Name { get; set; }
+    public string Artist { get; set; }
+    public int Views { get; set; }
+}
+

@@ -78,5 +78,36 @@ namespace proj
             admin.Show();
             this.Hide();
         }
+
+        private void adminLabel_MouseEnter(object sender, EventArgs e)
+        {
+            adminLabel.ForeColor = Color.White;
+        }
+
+        private void adminLabel_MouseLeave(object sender, EventArgs e)
+        {
+            adminLabel.ForeColor = Color.Black;
+        }
+
+        private void SignIn_Click(object sender, EventArgs e)
+        {
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            SqlCommand command = new SqlCommand("SELECT * FROM [dbo].[User] WHERE login = @usLog AND password = @usPass", sqlConnection);
+            command.Parameters.Add("@usLog", MySqlDbType.VarChar).Value = loginBox.Text;
+            command.Parameters.Add("@usPass", MySqlDbType.VarChar).Value = passwordBox.Text;
+            adapter.SelectCommand = command;
+            adapter.Fill(dataTable);
+            if (dataTable.Rows.Count > 0)
+            {
+                Form1 form1 = new Form1();
+                form1.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Login or Password not Correct!");
+            }
+        }
     }
 }

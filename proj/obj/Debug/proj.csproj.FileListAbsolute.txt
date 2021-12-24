@@ -1,7 +1,6 @@
 D:\Studying\Coursework\proj\proj\bin\Debug\proj.exe.config
 D:\Studying\Coursework\proj\proj\bin\Debug\proj.exe
 D:\Studying\Coursework\proj\proj\bin\Debug\proj.pdb
-D:\Studying\Coursework\proj\proj\obj\Debug\proj.csproj.AssemblyReference.cache
 D:\Studying\Coursework\proj\proj\obj\Debug\proj.Form1.resources
 D:\Studying\Coursework\proj\proj\obj\Debug\proj.Properties.Resources.resources
 D:\Studying\Coursework\proj\proj\obj\Debug\proj.csproj.GenerateResource.cache
@@ -40,3 +39,14 @@ D:\Studying\Coursework\proj\proj\bin\Debug\EntityFramework.dll
 D:\Studying\Coursework\proj\proj\bin\Debug\EntityFramework.SqlServer.dll
 D:\Studying\Coursework\proj\proj\bin\Debug\EntityFramework.xml
 D:\Studying\Coursework\proj\proj\bin\Debug\EntityFramework.SqlServer.xml
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.dll
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.WinForms.dll
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.Wpf.dll
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.pdb
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.xml
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.WinForms.pdb
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.WinForms.xml
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.Wpf.pdb
+D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.Wpf.xml
+D:\Studying\Coursework\proj\proj\obj\Debug\proj.Graphik.resources
+D:\Studying\Coursework\proj\proj\obj\Debug\proj.csproj.AssemblyReference.cache

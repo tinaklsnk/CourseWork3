@@ -19,9 +19,13 @@ namespace proj
 
         private void buttonSignIn_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void signInButton_Click(object sender, EventArgs e)
+        {
             if (loginBox.Text == "admin" && passwordBox.Text == "0000")
             {
-                //MessageBox.Show("Authorized!");
                 Form1 form1 = new Form1();
                 form1.Show();
                 form1.AllowEditTable();
