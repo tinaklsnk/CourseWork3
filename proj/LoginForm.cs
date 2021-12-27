@@ -27,7 +27,7 @@ namespace proj
             sqlConnection.Open();
             if (sqlConnection.State == ConnectionState.Open)
             {
-                MessageBox.Show("Connected!");
+                //MessageBox.Show("Connected!");
             }
         }
 

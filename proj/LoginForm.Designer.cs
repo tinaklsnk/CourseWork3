@@ -122,7 +122,7 @@ namespace proj
             this.signInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.signInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.signInButton.ForeColor = System.Drawing.Color.Black;
-            this.signInButton.Location = new System.Drawing.Point(152, 243);
+            this.signInButton.Location = new System.Drawing.Point(152, 259);
             this.signInButton.Name = "signInButton";
             this.signInButton.Size = new System.Drawing.Size(120, 46);
             this.signInButton.TabIndex = 12;

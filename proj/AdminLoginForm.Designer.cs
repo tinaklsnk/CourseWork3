@@ -101,7 +101,7 @@ namespace proj
             this.signInButton.Text = "Sign In";
             this.signInButton.TextColor = System.Drawing.Color.Black;
             this.signInButton.UseVisualStyleBackColor = false;
-            this.signInButton.Click += new System.EventHandler(this.signInButton_Click);
+            this.signInButton.Click += new System.EventHandler(this.SignIn_Click);
             // 
             // AdminLoginForm
             // 

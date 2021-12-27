@@ -32,17 +32,17 @@ namespace proj
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.buttonSignUp = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.loginLabel = new System.Windows.Forms.Label();
             this.loginBox = new System.Windows.Forms.TextBox();
+            this.buttonSignUp = new proj.RJButton();
             this.SuspendLayout();
             // 
             // passwordBox
             // 
             this.passwordBox.Location = new System.Drawing.Point(140, 184);
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(120, 22);
+            this.passwordBox.Size = new System.Drawing.Size(156, 22);
             this.passwordBox.TabIndex = 14;
             this.passwordBox.UseSystemPasswordChar = true;
             // 
@@ -58,41 +58,50 @@ namespace proj
             this.label3.TabIndex = 12;
             this.label3.Text = "Registration";
             // 
-            // buttonSignUp
+            // passwordLabel
             // 
-            this.buttonSignUp.BackColor = System.Drawing.Color.White;
-            this.buttonSignUp.Location = new System.Drawing.Point(140, 273);
-            this.buttonSignUp.Name = "buttonSignUp";
-            this.buttonSignUp.Size = new System.Drawing.Size(120, 54);
-            this.buttonSignUp.TabIndex = 11;
-            this.buttonSignUp.Text = "Sign Up";
-            this.buttonSignUp.UseVisualStyleBackColor = false;
-            this.buttonSignUp.Click += new System.EventHandler(this.buttonSignUp_Click);
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(40, 184);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(69, 17);
+            this.passwordLabel.TabIndex = 10;
+            this.passwordLabel.Text = "Password";
             // 
-            // label2
+            // loginLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 184);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Password";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Login";
+            this.loginLabel.AutoSize = true;
+            this.loginLabel.Location = new System.Drawing.Point(66, 125);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(43, 17);
+            this.loginLabel.TabIndex = 9;
+            this.loginLabel.Text = "Login";
             // 
             // loginBox
             // 
             this.loginBox.Location = new System.Drawing.Point(140, 125);
             this.loginBox.Name = "loginBox";
-            this.loginBox.Size = new System.Drawing.Size(120, 22);
+            this.loginBox.Size = new System.Drawing.Size(156, 22);
             this.loginBox.TabIndex = 8;
+            // 
+            // buttonSignUp
+            // 
+            this.buttonSignUp.BackColor = System.Drawing.Color.White;
+            this.buttonSignUp.BackgroundColor = System.Drawing.Color.White;
+            this.buttonSignUp.BorderColor = System.Drawing.Color.White;
+            this.buttonSignUp.BorderRadius = 15;
+            this.buttonSignUp.BorderSize = 0;
+            this.buttonSignUp.FlatAppearance.BorderSize = 0;
+            this.buttonSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSignUp.ForeColor = System.Drawing.Color.Black;
+            this.buttonSignUp.Location = new System.Drawing.Point(140, 278);
+            this.buttonSignUp.Name = "buttonSignUp";
+            this.buttonSignUp.Size = new System.Drawing.Size(120, 43);
+            this.buttonSignUp.TabIndex = 15;
+            this.buttonSignUp.Text = "Sign Up";
+            this.buttonSignUp.TextColor = System.Drawing.Color.Black;
+            this.buttonSignUp.UseVisualStyleBackColor = false;
+            this.buttonSignUp.Click += new System.EventHandler(this.SignUp_Click);
             // 
             // RegisterForm
             // 
@@ -100,11 +109,11 @@ namespace proj
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(400, 383);
+            this.Controls.Add(this.buttonSignUp);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.buttonSignUp);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.loginBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegisterForm";
@@ -118,9 +127,9 @@ namespace proj
 
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button buttonSignUp;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label loginLabel;
         private System.Windows.Forms.TextBox loginBox;
+        private RJButton buttonSignUp;
     }
 }

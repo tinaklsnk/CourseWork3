@@ -50,3 +50,4 @@ D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.Wpf.pdb
 D:\Studying\Coursework\proj\proj\bin\Debug\LiveCharts.Wpf.xml
 D:\Studying\Coursework\proj\proj\obj\Debug\proj.Graphik.resources
 D:\Studying\Coursework\proj\proj\obj\Debug\proj.csproj.AssemblyReference.cache
+D:\Studying\Coursework\proj\proj\obj\Debug\proj.RemoveUser.resources

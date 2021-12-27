@@ -15,56 +15,46 @@ namespace proj
 {
     public partial class RegisterForm : Form
     {
-        private SqlConnection sqlConnection = null;
         public RegisterForm()
         {
             InitializeComponent();
         }
 
-        private void buttonSignUp_Click(object sender, EventArgs e)
+        private void SignUp_Click(object sender, EventArgs e)
         {
-            if(loginBox.Text=="")
+            if (string.IsNullOrWhiteSpace(loginBox.Text))
             {
                 MessageBox.Show("Create login!");
                 return;
             }
-            if (passwordBox.Text == "")
+            if (string.IsNullOrWhiteSpace(passwordBox.Text))
             {
                 MessageBox.Show("Create password!");
                 return;
             }
-            sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UsersDB"].ConnectionString);
-            if (IsUserExits())
-                return;
-            SqlCommand command = new SqlCommand("INSERT INTO [dbo].[User] (login, password) VALUES (@usLog, @usPass)", sqlConnection);
-            command.Parameters.Add("@usLog", MySqlDbType.VarChar).Value = loginBox.Text;
-            command.Parameters.Add("@usPass", MySqlDbType.VarChar).Value = passwordBox.Text;
-            sqlConnection.Open();
-            if (command.ExecuteNonQuery() == 1)
-            {
-                MessageBox.Show("Signed up!");
-                this.Hide();
-            }
-            else
-                MessageBox.Show("Fail!");
-            sqlConnection.Close();
-        }
 
-        public Boolean IsUserExits()
-        {
-            DataTable dataTable = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            SqlCommand command = new SqlCommand("SELECT * FROM [dbo].[User] WHERE login = @usLog", sqlConnection);
-            command.Parameters.Add("@usLog", MySqlDbType.VarChar).Value = loginBox.Text;
-            adapter.SelectCommand = command;
-            adapter.Fill(dataTable);
-            if (dataTable.Rows.Count > 0)
+            if (DataBaseFunc.IsUserExits(loginBox.Text))
             {
                 MessageBox.Show("Login is busy!");
-                return true;
+                return;
+            }
+
+            if (DataBaseFunc.AddUser(loginBox.Text, passwordBox.Text))
+            {
+                MessageBox.Show("Signed Up!");
+                this.Close();
             }
             else
-                return false;
+            {
+                MessageBox.Show("Failed!");
+            }
+        }
+
+        public void DarkTheme()
+        {
+            this.BackColor = Color.Black;
+            loginLabel.ForeColor = Color.White;
+            passwordLabel.ForeColor = Color.White;
         }
     }
 }
