@@ -21,7 +21,7 @@ namespace proj
         {
             if (loginBox.Text == "admin" && passwordBox.Text == "0000")
             {
-                Form1 form1 = new Form1();
+                MainForm form1 = new MainForm();
                 form1.Show();
                 form1.AdminAccess();
                 this.Hide();

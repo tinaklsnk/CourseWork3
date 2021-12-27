@@ -33,13 +33,13 @@ namespace proj
                 return;
             }
 
-            if (DataBaseFunc.IsUserExits(loginBox.Text))
+            if (DataBaseClass.IsUserExits(loginBox.Text))
             {
                 MessageBox.Show("Login is busy!");
                 return;
             }
 
-            if (DataBaseFunc.AddUser(loginBox.Text, passwordBox.Text))
+            if (DataBaseClass.AddUser(loginBox.Text, passwordBox.Text))
             {
                 MessageBox.Show("Signed Up!");
                 this.Close();

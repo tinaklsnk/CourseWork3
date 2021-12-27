@@ -43,7 +43,7 @@ namespace proj
             if(dataTable.Rows.Count>0)
             {
                 //MessageBox.Show("Authorized!");
-                Form1 form1 = new Form1();
+                MainForm form1 = new MainForm();
                 form1.Show();
                 this.Hide();
             }
@@ -100,7 +100,7 @@ namespace proj
             adapter.Fill(dataTable);
             if (dataTable.Rows.Count > 0)
             {
-                Form1 form1 = new Form1();
+                MainForm form1 = new MainForm();
                 form1.Show();
                 this.Hide();
             }

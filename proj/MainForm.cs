@@ -9,25 +9,23 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Serialization;
 using Excel = Microsoft.Office.Interop.Excel;
 using Formatting = System.Xml.Formatting;
 
 namespace proj
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private string fileName = "D:\\Studying\\Coursework\\proj\\database.XLSX";
         private DataTableCollection tableCollection = null;
-        XmlSerializer xs;
         static bool darkTheme = false;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             notifyIcon1.BalloonTipTitle = "MyApp";
             notifyIcon1.Text = "MyApp";
@@ -50,9 +48,10 @@ namespace proj
         {
             DataTable table = tableCollection[Convert.ToString(toolStripComboBox1.SelectedItem)];
             dataGridView1.DataSource = table;
+            HideLink();
         }
 
-        private void Form1_Resize(object sender, EventArgs e)
+        private void MainForm_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
             {
@@ -105,6 +104,7 @@ namespace proj
                     {
                         OpenXMLFile(fileName);
                     }
+                    HideLink();
                 }
                 else
                 {
@@ -507,6 +507,32 @@ namespace proj
                 removeUser.DarkTheme();
             }
             removeUser.ShowDialog();
+        }
+
+        private void HideLink()
+        {
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                if (dataGridView1.Columns[i].Name == "Link")
+                {
+                    this.dataGridView1.Columns["Link"].Visible = false;
+                }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                if (dataGridView1.Columns[i].Name == "Link")
+                {
+                    var url = dataGridView1.Rows[e.RowIndex].Cells[i].Value.ToString();
+                    if (!string.IsNullOrWhiteSpace(url))
+                    {
+                        System.Diagnostics.Process.Start(url);
+                    }
+                }
+            }
         }
     }
 }

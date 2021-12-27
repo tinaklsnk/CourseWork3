@@ -30,9 +30,9 @@ namespace proj
                 MessageBox.Show("Enter login!");
                 return;
             }
-            if (DataBaseFunc.IsUserExits(loginBox.Text))
+            if (DataBaseClass.IsUserExits(loginBox.Text))
             {
-                if(DataBaseFunc.RemoveUser(loginBox.Text))
+                if(DataBaseClass.RemoveUser(loginBox.Text))
                 {
                     MessageBox.Show("User removed!");
                     this.Close();

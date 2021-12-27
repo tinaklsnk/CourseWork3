@@ -129,18 +129,18 @@
     <Compile Include="AdminLoginForm.Designer.cs">
       <DependentUpon>AdminLoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataBaseFunc.cs" />
+    <Compile Include="DataBaseClass.cs" />
     <Compile Include="Graphik.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Graphik.Designer.cs">
       <DependentUpon>Graphik.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="JSON.cs" />
     <Compile Include="LoginForm.cs">
@@ -174,8 +174,8 @@
     <EmbeddedResource Include="Graphik.resx">
       <DependentUpon>Graphik.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

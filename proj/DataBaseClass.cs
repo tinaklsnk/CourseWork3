@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Configuration;
 
 namespace proj
 {
-   static class DataBaseFunc
+   static class DataBaseClass
     {
         private static SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["UsersDB"].ConnectionString);
         public static bool IsUserExits(string login)
